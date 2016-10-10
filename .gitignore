@@ -1,2 +1,3 @@
 *.pyc
 trebor/local_settings.py
+*.sqlite3
