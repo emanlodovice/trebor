@@ -9,6 +9,7 @@ urlpatterns = [
     # url(r'^$', 'trebor.views.home', name='home'),
     # url(r'^blog/', include('blog.urls')),
     url(r'^$', views.Home.as_view(), name='home'),
+    url(r'^detail/$', views.Detail.as_view(), name='detail'),
 
     url(r'^admin/', include(admin.site.urls)),
 ]
