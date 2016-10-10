@@ -38,6 +38,7 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'product',
+    'trebor',
     # 3rd party apps
     'debug_toolbar',
     'debug_panel',
