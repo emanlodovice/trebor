@@ -1,25 +1,41 @@
 {% extends 'base.html' %}
 {% load static %}
 
-{% block title %}Detail{% endblock %}
+{% block title %}{{ object.name}} - Trebor{% endblock %}
 
 {% block content %}
     <div class="container">
-        <h4 class="product-title">Ducati Panigale</h4>
-        <p>One common flaw we've seen in many frameworks is a lack of support for truly responsive text. While elements on the page resize fluidly, text still resizes on a fixed basis. To ameliorate this problem, for text heavy pages, we've created a class that fluidly scales text size and line-height to optimize readability for the user. Line length stays between 45-80 characters and line height scales to be larger on smaller screens. To see Flow Text in action, slowly resize your browser and watch the size of this text body change! Use the button above to toggle off/on flow-text to see the difference!</p>
+        <h4 class="product-title">{{ object.name}} - {{ object.brand.name }}</h4>
+        <div class="row">
+            <div class="col s12 m6">
+                <p>{{ object.description }}</p>
+            </div>
+            <div class="col s12 m6">
+                <table class="striped">
+                    <tbody>
+                    {% for spec in object.specs_list %}
+                        <tr>
+                            <td>{{ spec.0 }}</td>
+                            <td>{{ spec.1 }}</td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
         <div class="row">
             <div class="col s12 m6">
                 <div class="video-container">
-                    <iframe width="560" height="315" src="https://www.youtube.com/embed/FH77iTDELBg" frameborder="0" allowfullscreen></iframe>
+                    <iframe width="560" height="315" src="{{ object.youtube_embed_url }}" frameborder="0" allowfullscreen></iframe>
                 </div>
             </div>
             <div class="col s12 m6">
-                <img class="materialboxed responsive-img" data-caption="Ducati Panigale" src="{% static 'img/bike1.jpg' %}">
+                <img class="materialboxed responsive-img" data-caption="{{ object.name }}" src="{{ object.image_url }}">
             </div>
         </div>
         <div class="row">
             <div class="col m4 s12 offset-m4 center">
-                <b>P 100.00</b>
+                <b>P {{ object.cost }}</b>
                 <button data-target="order" class="waves-effect waves-light btn-large modal-trigger">
                     <i class="material-icons left">shopping_cart</i>ORDER
                 </button>
@@ -49,7 +65,6 @@
 
 {% block js %}
     <div id="fb-root"></div>
-
     <script>(function(d, s, id) {
       var js, fjs = d.getElementsByTagName(s)[0];
       if (d.getElementById(id)) return;

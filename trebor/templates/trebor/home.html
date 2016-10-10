@@ -3,34 +3,21 @@
 
 {% block content %}
     <div class="row">
-        <div class="col s12 m3">
-          <div class="card small">
-            <div class="card-image">
-              <img src="{% static 'img/bike1.jpg' %}">
-              <span class="card-title">Ducati Panigale</span>
+        {% for object in object_list %}
+            <div class="col s12 m3">
+                <div class="card small">
+                    <div class="card-image">
+                        <img src="{{ object.image_url }}">
+                        <span class="card-title">{{ object.name }} - {{ object.brand.name }}</span>
+                    </div>
+                    <div class="card-content">
+                        <p>{{ object.description }}</p>
+                    </div>
+                    <div class="card-action">
+                        <a href="{% url 'detail' object.pk %}">View</a>
+                    </div>
+                </div>
             </div>
-            <div class="card-content">
-              <p>Description</p>
-            </div>
-            <div class="card-action">
-              <a href="#">View</a>
-            </div>
-          </div>
-        </div>
-        <div class="col s12 m3">
-          <div class="card small">
-            <div class="card-image">
-              <img src="{% static 'img/bike2.jpg' %}">
-              <span class="card-title">Card Title</span>
-            </div>
-            <div class="card-content">
-              <p>I am a very simple card. I am good at containing small bits of information.
-              I am convenient because I require little markup to use effectively.</p>
-            </div>
-            <div class="card-action">
-              <a href="#">This is a link</a>
-            </div>
-          </div>
-        </div>
+        {% endfor %}        
     </div>
 {% endblock %}
