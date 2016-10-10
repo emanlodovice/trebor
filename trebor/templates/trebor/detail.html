@@ -3,6 +3,15 @@
 
 {% block title %}{{ object.name}} - Trebor{% endblock %}
 
+{% block meta %}
+    <meta name="description" content="{{ object.description }}" />
+    <meta property="og:title" content="{{ object.name }}" />
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="{{ url }}" />
+    <meta property="og:image" content="{{ object.image_url }}" />
+    <meta property="og:description" content="{{ object.description }}" />
+{% endblock %}
+
 {% block content %}
     <div class="container">
         <h4 class="product-title">{{ object.name}} - {{ object.brand.name }}</h4>
